@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <title>Card Quiz</title>
+     <style>
+          body {
+               font-size: 3vw;
+          }
+
+          #nextQuestionButton {
+               float: right;
+          }
+
+          button {
+               height: 50px;
+               width: 90px;
+               font-size: 15px;
+               cursor: pointer;
+          }
+
+          .answer {
+               margin: auto;
+               cursor: pointer;
+               height: 100%;
+               font-size: 2vw;
+               font-family: "Comic Sans MS", "Comic Sans", cursive;
+               visibility: hidden;
+          }
+
+          .answerWrapper {
+               border: solid black;
+               width: 40%;
+               margin: auto;
+               cursor: pointer;
+               margin: 2% auto;
+               visibility: hidden;
+          }
+
+          .answerWrapper:hover {
+               border: solid blue;
+          }
+
+          .answercontainer {
+               display: grid;
+               grid-template-columns: auto auto;
+               margin: auto;
+          }
+
+          #questionDisplay {
+               margin: auto;
+               border: solid black;
+               width: 80%;
+               text-align: center;
+               padding: 2%;
+          }
+
+          .scoreDisplay {
+               border: solid green;
+               width: 17%;
+               margin: auto 0 20px auto;
+               text-align: center;
+          }
+
+          #checkIfAnswered,
+          #checkIfStarted {
+               visibility: hidden;
+          }
+
+          .hideThis {
+               visibility: hidden;
+          }
+     </style>
+</head>
+
+<body>
+     <div>
+          <p class="scoreDisplay">Score: <span id="currentScore"></span></p>
+          <p id="questionDisplay">Start the quiz and test your card knowledge!</p>
+          <div class="answercontainer">
+               <span class="answerWrapper">
+                    <p class="answer" onClick="checkAnswer('Blue Card')">Blue Card</p>
+               </span>
+               <span class="answerWrapper">
+                    <p class="answer" onClick="checkAnswer('Yellow Card')">Yellow Card</p>
+               </span>
+               <span class="answerWrapper">
+                    <p class="answer" onClick="checkAnswer('Red Card')">Red Card</p>
+               </span>
+               <span class="answerWrapper">
+                    <p class="answer" onClick="checkAnswer('Back to Hoops')">Back to Hoops</p>
+               </span>
+          </div>
+          <button id="startButton" onclick="startQuiz()">Start Quiz</button>
+          <button id="nextQuestionButton" class="hideThis" onclick="nextQuestion()">Next Question!</button>
+          <p class="hideThis">correct:
+               <span id="answerDisplay">not yet defined</span>
+          </p>
+          <p id="checkIfAnswered">not yet answered</p>
+          <p id="checkIfStarted">not yet started</p>
+     </div>
+     <script>
+          var checkAnswered = document.getElementById("checkIfAnswered");
+          var checkStarted = document.getElementById("checkIfStarted");
+          var currentScore = document.getElementById("currentScore");
+          var allAnswers = document.getElementsByClassName("answer");
+          var nextQuestionButton = document.getElementById("nextQuestionButton");
+          var answers = document.getElementsByClassName("answer");
+          var answerWrappers = document.getElementsByClassName("answerWrapper");
+          var alreadyAnsweredQuestions = [];
+          var numberCorrectAnswers = 0;
+          var numberGuesses = 0;
+          var maxNumberOfQuestions = 10;
+
+          // starts the quiz, i.e. hides the start button, makes the answers visible, get the next question
+          function startQuiz() {
+               document.getElementById("startButton").style.visibility = "hidden";
+               for (i = 0; i < answers.length; i++) {
+                    answers[i].style.visibility = "visible"
+               }
+               for (i = 0; i < answerWrappers.length; i++) {
+                    answerWrappers[i].style.visibility = "visible"
+               }
+               checkAnswered.textContent = "already answered"
+               nextQuestion();
+          }
+
+          // adds the current questions id to the list, 
+          // compares answer to correct solution
+          // colors the answers respectively
+          // prevents more answers
+          // enables the next question
+          function checkAnswer(passedString) {
+               alreadyAnsweredQuestions = [...alreadyAnsweredQuestions, currentObject.id]
+               numberGuesses += 1;
+               if (passedString == currentObject.correct) {
+                    numberCorrectAnswers += 1;
+               }
+               for (i = 0; i < allAnswers.length; i++) {
+                    if (allAnswers[i].textContent == currentObject.correct) {
+                         allAnswers[i].style.background = "green",
+                              allAnswers[i].style.border = "solid green"
+                    }
+                    else {
+                         allAnswers[i].style.background = "red", allAnswers[i].style.border = "red"
+                    }
+               };
+               checkAnswered.textContent = "already answered";
+               nextQuestionButton.style.visibility = "visible";
+               currentScore.textContent = Math.floor(numberCorrectAnswers / numberGuesses * 100) + "%"
+          }
+
+          // gets a new question
+          // displays the question text and id
+          // prevents getting a new question
+          function nextQuestion() {
+               currentObject = questionArray[Math.floor(Math.random() * questionArray.length)];
+               if (alreadyAnsweredQuestions.includes(currentObject.id)) {
+                    // if (alreadyAnsweredQuestions.length == questionArray.length) { return };
+                    nextQuestion();
+               } else {
+                    alreadyAnsweredQuestions.push(currentObject.id);
+                    document.getElementById("questionDisplay").textContent = "Question " + currentObject.id + ": " + currentObject.question;
+                    document.getElementById("answerDisplay").textContent = currentObject.correct;
+                    checkAnswered.textContent = "not yet answered";
+                    nextQuestionButton.style.visibility = "hidden"
+                    for (i = 0; i < allAnswers.length; i++) {
+                         allAnswers[i].style.background = "white", allAnswers[i].style.border = "none"
+                    }
+               }
+          };
+     </script>
+     <script>var questionArray = [
+               { "id": "1", "title": "first q", "question": "Blue Card", "correct": "Blue Card" },
+               { "id": "2", "title": "second q", "question": "Yellow Card", "correct": "Yellow Card" },
+               { "id": "3", "title": "third q", "question": "Blue Card", "correct": "Blue Card" },
+               { "id": "4", "title": "fourth q", "question": "Red Card", "correct": "Red Card" },
+               { "id": "5", "title": "fifth q", "question": "Back to Hoops", "correct": "Back to Hoops" },
+               { "id": "6", "title": "sixth q", "question": "Blue Card", "correct": "Blue Card" }]
+     </script>
+</body>
+
+</html>

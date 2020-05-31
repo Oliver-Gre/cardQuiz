@@ -110,7 +110,7 @@
           var alreadyAnsweredQuestions = [];
           var numberCorrectAnswers = 0;
           var numberGuesses = 0;
-          var maxNumberOfQuestions = 10;
+          var maxNumberOfQuestions = 5;
 
           // starts the quiz, i.e. hides the start button, makes the answers visible, get the next question
           function startQuiz() {
@@ -131,30 +131,33 @@
           // prevents more answers
           // enables the next question
           function checkAnswer(passedString) {
-               alreadyAnsweredQuestions = [...alreadyAnsweredQuestions, currentObject.id]
-               numberGuesses += 1;
-               if (passedString == currentObject.correct) {
-                    numberCorrectAnswers += 1;
+               if (checkAnswered.textContent == "not yet answered") {
+                    alreadyAnsweredQuestions = [...alreadyAnsweredQuestions, currentObject.id]
+                    numberGuesses += 1;
+                    if (passedString == currentObject.correct) {
+                         numberCorrectAnswers += 1;
+                    }
+                    for (i = 0; i < allAnswers.length; i++) {
+                         if (allAnswers[i].textContent == currentObject.correct) {
+                              allAnswers[i].style.background = "green",
+                                   allAnswers[i].style.border = "solid green"
+                         }
+                         else {
+                              allAnswers[i].style.background = "red", allAnswers[i].style.border = "red"
+                         }
+                    };
+                    checkAnswered.textContent = "already answered";
+                    nextQuestionButton.style.visibility = "visible";
+                    currentScore.textContent = Math.floor(numberCorrectAnswers / numberGuesses * 100) + "%"
                }
-               for (i = 0; i < allAnswers.length; i++) {
-                    if (allAnswers[i].textContent == currentObject.correct) {
-                         allAnswers[i].style.background = "green",
-                              allAnswers[i].style.border = "solid green"
-                    }
-                    else {
-                         allAnswers[i].style.background = "red", allAnswers[i].style.border = "red"
-                    }
-               };
-               checkAnswered.textContent = "already answered";
-               nextQuestionButton.style.visibility = "visible";
-               currentScore.textContent = Math.floor(numberCorrectAnswers / numberGuesses * 100) + "%"
           }
 
           // gets a new question
           // displays the question text and id
           // prevents getting a new question
           function nextQuestion() {
-               currentObject = questionArray[Math.floor(Math.random() * questionArray.length)];
+               if (numberGuesses < maxNumberOfQuestions)
+                    currentObject = questionArray[Math.floor(Math.random() * questionArray.length)];
                if (alreadyAnsweredQuestions.includes(currentObject.id)) {
                     // if (alreadyAnsweredQuestions.length == questionArray.length) { return };
                     nextQuestion();

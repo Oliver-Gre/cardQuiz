@@ -1,0 +1,116 @@
+back to hoops
+
+
+{ "id": "2", "question": "Illegally failing to replace a lost headband", "correct": "Back to Hoops" },
+{ "id": "3", "question": "Second false restart (game stoppage)", "correct": "Back to Hoops" },
+{ "id": "4", "question": "Improper immunity claim", "correct": "Back to Hoops" },
+{ "id": "5", "question": "Minor invalid immunity claim", "correct": "Back to Hoops" },
+{ "id": "6", "question": "Minor illegal interposition interaction", "correct": "Back to Hoops" },
+{ "id": "7", "question": "Minor failure to avoid a propelled quaffle", "correct": "Back to Hoops" },
+{ "id": "8", "question": "Intentionally or egregiously illegally going or remaining out of bounds", "correct": "Back to Hoops" },
+{ "id": "9", "question": "Illegally physically preventing the inbounding player from re-entering the", "correct": "Back to Hoops" },
+{ "id": "10", "question": "Illegally pursuing the snitch", "correct": "Back to Hoops" },
+{ "id": "11", "question": "Delaying the completion of the turnover procedure ", "correct": "Back to Hoops" },
+blue card
+
+ { "id": "15", "question": "Encroaching on the pitch", "correct": "Blue Card" },
+ { "id": "16", "question": "Illegal substitution", "correct": "Blue Card" },
+ { "id": "17", "question": "Illegal circumvention (leaving sub area)", "correct": "Blue Card" },
+ { "id": "18", "question": "Unintentional sideline interference", "correct": "Blue Card" },
+ { "id": "19", "question": "Entering play with illegally long or sharp fingernails", "correct": "Blue Card" },
+ { "id": "20", "question": "Entering play without wearing mandatory equipment", "correct": "Blue Card" },
+ { "id": "21", "question": "Intentionally removing mandatory equipment while in play", "correct": "Blue Card" },
+ { "id": "22", "question": "Entering play without a legal and recognizable jersey number", "correct": "Blue Card" },
+ { "id": "23", "question": "Using illegal additional equipment in play", "correct": "Blue Card" },
+ { "id": "24", "question": "Changing position headbands after the “brooms down” call", "correct": "Blue Card" },
+ { "id": "25", "question": "Changing location behind the keeper zone line after the “brooms down” call", "correct": "Blue Card" },
+ { "id": "26", "question": "False start", "correct": "Blue Card" },
+ { "id": "27", "question": "Seeker false start", "correct": "Blue Card" },
+ { "id": "28", "question": "Intentionally and illegally interacting with a dead quaffle", "correct": "Blue Card" },
+ { "id": "29", "question": "Illegally resetting an opponent’s hoop", "correct": "Blue Card" },
+ { "id": "30", "question": "Unintentionally dislodging hoops repeatedly", "correct": "Blue Card" },
+ { "id": "31", "question": "Illegally contacting an opponent with a held bludger", "correct": "Blue Card" },
+ { "id": "32", "question": "Illegally interacting with play while knocked out", "correct": "Blue Card" },
+ { "id": "33", "question": "Affecting play while unknowingly knocked out", "correct": "Blue Card" },
+ { "id": "34", "question": "Illegal bat", "correct": "Blue Card" },
+ { "id": "35", "question": "Illegal block", "correct": "Blue Card" },
+ { "id": "36", "question": "Illegal bludger swat", "correct": "Blue Card" },
+ { "id": "37", "question": "Struck beater violation", "correct": "Blue Card" },
+ { "id": "38", "question": "Invalid immunity claim", "correct": "Blue Card" },
+ { "id": "39", "question": "Immunity violation", "correct": "Blue Card" },
+ { "id": "40", "question": "Repeated use of explicit or vulgar language", "correct": "Blue Card" },
+ { "id": "41", "question": "Illegally using a ball of one’s own position", "correct": "Blue Card" },
+ { "id": "42", "question": "Failure to avoid a propelled quaffle", "correct": "Blue Card" },
+ { "id": "43", "question": "Illegally failing to make a reasonable effort to avoid a ball", "correct": "Blue Card" },
+ { "id": "44", "question": "Illegal second kick", "correct": "Blue Card" },
+ { "id": "45", "question": "Propelling a ball with the intent of sending any ball out of bounds", "correct": "Blue Card" },
+ { "id": "46", "question": "Illegally using verbal or visual referee signals or commands ", "correct": "Blue Card" },
+
+
+ red card
+
+{ "id": "47", "question": "Intentional sideline interference", "correct": "Red Card" },
+{ "id": "48", "question": "Knowingly initiating a new play with a broken broom", "correct": "Red Card" },
+{ "id": "49", "question": "Using equipment in play that was disallowed by a game official", "correct": "Red Card" },
+{ "id": "50", "question": "Using equipment explicitly barred by the tournament director", "correct": "Red Card" },
+{ "id": "51", "question": "Illegally altering game equipment", "correct": "Red Card" },
+{ "id": "52", "question": " Wearing forbidden equipment", "correct": "Red Card" },
+{ "id": "53", "question": "Intentional interposition goaltending", "correct": "Red Card" },
+{ "id": "54", "question": "Intentionally dislodging a hoop", "correct": "Red Card" },
+{ "id": "55", "question": "Moving or altering a hoop to affect whether the quaffle will pass through it", "correct": "Red Card" },
+{ "id": "56", "question": "Violent or egregious illegal kick", "correct": "Red Card" },
+{ "id": "57", "question": "Violently or egregiously illegally hurdling any person", "correct": "Red Card" },
+{ "id": "58", "question": "Charging a helpless receiver", "correct": "Red Card" },
+{ "id": "59", "question": "Tackling a helpless receiver", "correct": "Red Card" },
+{ "id": "60", "question": " Playing egregiously recklessly", "correct": "Red Card" },
+{ "id": "61", "question": " Egregiously illegal contact against an opponent, spectator, official, or event", "correct": "Red Card" },
+staffer
+{ "id": "62", "question": "Violent or egregious illegal interposition interaction", "correct": "Red Card" },
+{ "id": "63", "question": "Violently or egregiously illegally interacting with a knocked out opponent", "correct": "Red Card" },
+{ "id": "64", "question": "Egregious unsportsmanlike conduct", "correct": "Red Card" },
+{ "id": "65", "question": "Engaging in a physical altercation with an opponent, spectator, official, or", "correct": "Red Card" },
+event staffer
+{ "id": "66", "question": "Intentionally spitting at or on an opponent, spectator, official, or event staffer", "correct": "Red Card" },
+{ "id": "67", "question": "Serious foul play", "correct": "Red Card" },
+{ "id": "68", "question": "Intentionally and illegally blocking a score (also 7.1.3.) ", "correct": "Red Card" },
+
+
+turnover
+
+ { "id": "12", "question": "Unintentional natural motion violation", "correct": "Turnover" },
+ { "id": "13", "question": "Incidental interposition ball interference", "correct": "Turnover" },
+ { "id": "14", "question": "Illegal reset ", "correct": "Turnover" },
+
+Unique penalties
+
+
+ { "id": "82", "question": "Delay of game (blue card and quaffle turnover)", "correct": "Other" },
+ { "id": "83", "question": "Inbounding procedure violation (back to hoops and turnover)", "correct": "Other" },
+ { "id": "84", "question": "Disrespecting an official (blue or yellow card)", "correct": "Other" },
+ { "id": "85", "question": "Third bludger interference (back to hoops plus double bludger turnover)", "correct": "Other" },
+
+ 
+Speaking Captain Blue Card
+
+
+ { "id": "86", "question": "Having two players wearing the same number in the player area", "correct": "Other" },
+ { "id": "87", "question": "Illegally communicating with people in the player area as an ejected player ", "correct": "Other" }, 
+ { "id": "88", "question": "Exceeding the broom limit", "correct": "Other" },
+
+
+ standard contact penalty
+
+ { "id": "69", "question": "Illegal physical contact (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+
+ { "id": "70", "question": "Illegally charging a picking player (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "71", "question": "Illegal slide (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "72", "question": "Illegal dive (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "73", "question": "Illegal contact through a teammate (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "74", "question": "Illegal attempt to steal (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "75", "question": "Illegal contact from behind (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "76", "question": "Illegal body block (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "77", "question": "Illegal push (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "78", "question": "Illegal charge (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "79", "question": "Illegal wrap (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+ { "id": "80", "question": "Illegal interaction with the snitch runner (Standard Contact Penalty applies)", "correct": "Yellow Card" }, 
+ { "id": "81", "question": "Illegal pick (Standard Contact Penalty applies)", "correct": "Yellow Card" },

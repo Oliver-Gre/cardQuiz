@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
+<!-- constructor parameter default werte, für eigene antworten-->
 
 <head>
      <title>Card Quiz</title>
+     <meta charset="utf-8" />
      <style>
           body {
                font-size: 3vw;
+               margin: 25px;
           }
+
+          #startButton {
+               border-radius: 50%;
+               height: 80px;
+               width: 80px;
+               color: white;
+               background-color: brown;
+          }
+
 
           #nextQuestionButton {
-               float: right;
-          }
-
-          button {
-               height: 50px;
-               width: 90px;
-               font-size: 15px;
+               border-radius: 50%;
+               height: 120px;
+               width: 120px;
+               color: white;
+               background-color: brown;
                cursor: pointer;
           }
 
@@ -26,6 +36,7 @@
                font-size: 2vw;
                font-family: "Comic Sans MS", "Comic Sans", cursive;
                visibility: hidden;
+               text-align: center;
           }
 
           .answerWrapper {
@@ -55,27 +66,83 @@
                padding: 2%;
           }
 
-          .scoreDisplay {
+          #progressDisplay {
+               width: auto;
+               min-width: 35vw;
                border: solid green;
-               width: 17%;
-               margin: auto 0 20px auto;
                text-align: center;
           }
 
+          .scoreDisplay {
+               border: solid green;
+               width: auto;
+               min-width: 20vw;
+               text-align: center;
+
+          }
+
           #checkIfAnswered,
-          #checkIfStarted {
+          #checkIfStarted,
+          .hideThis {
                visibility: hidden;
           }
 
-          .hideThis {
-               visibility: hidden;
+          #wrapperAroundEverything {
+               margin: 20px
+          }
+
+          .pushToTheRightContainer {
+               display: flex;
+               justify-content: flex-end;
+          }
+
+          .keepInTheCenterContainer {
+               display: grid;
+               justify-content: center;
+          }
+
+          @media only screen and (max-width: 980px) {
+               body {
+                    font-size: 7vw;
+               }
+
+               .answercontainer {
+                    grid-template-columns: auto;
+               }
+
+               .answer {
+                    font-size: 6vw;
+               }
+
+               .answerWrapper {
+                    width: 80%;
+               }
+
+               #progressDisplay,
+               .scoreDisplay {
+                    font-size: 5vw;
+               }
+
+               #nextQuestionButton {
+                    height: 200px;
+                    width: 200px;
+                    font-size: 3.5vw;
+               }
+
+               .unlessItsMobileThenCenterIt {
+                    justify-content: center;
+               }
           }
      </style>
 </head>
 
 <body>
-     <div>
+     <div class="pushToTheRightContainer unlessItsMobileThenCenterIt">
+          <p id="progressDisplay"></p>
           <p class="scoreDisplay">Score: <span id="currentScore"></span></p>
+     </div>
+
+     <div id="wrapperAroundEverything">
           <p id="questionDisplay">Start the quiz and test your card knowledge!</p>
           <div class="answercontainer">
                <span class="answerWrapper">
@@ -91,14 +158,103 @@
                     <p class="answer" onClick="checkAnswer('Back to Hoops')">Back to Hoops</p>
                </span>
           </div>
-          <button id="startButton" onclick="startQuiz()">Start Quiz</button>
-          <button id="nextQuestionButton" class="hideThis" onclick="nextQuestion()">Next Question!</button>
-          <p class="hideThis">correct:
-               <span id="answerDisplay">not yet defined</span>
-          </p>
-          <p id="checkIfAnswered">not yet answered</p>
-          <p id="checkIfStarted">not yet started</p>
      </div>
+     <div class="keepInTheCenterContainer">
+          <button id="startButton" onclick="startQuiz()">Start Quiz</button>
+     </div>
+     <div class="pushToTheRightContainer">
+          <button id="nextQuestionButton" class="hideThis" onclick="nextQuestion()">Next Question!</button>
+     </div>
+
+     <p class="hideThis">correct:
+          <span id="answerDisplay">not yet defined</span>
+     </p>
+     <p id="checkIfAnswered">not yet answered</p>
+     <p id="checkIfStarted">not yet started</p>
+
+     <script>var questionArray = [
+               { "id": "2", "question": "Illegally failing to replace a lost headband", "correct": "Back to Hoops" },
+               { "id": "3", "question": "Second false restart (game stoppage)", "correct": "Back to Hoops" },
+               { "id": "4", "question": "Improper immunity claim", "correct": "Back to Hoops" },
+               { "id": "5", "question": "Minor invalid immunity claim", "correct": "Back to Hoops" },
+               { "id": "6", "question": "Minor illegal interposition interaction", "correct": "Back to Hoops" },
+               { "id": "7", "question": "Minor failure to avoid a propelled quaffle", "correct": "Back to Hoops" },
+               { "id": "8", "question": "Intentionally or egregiously illegally going or remaining out of bounds", "correct": "Back to Hoops" },
+               { "id": "9", "question": "Illegally physically preventing the inbounding player from re-entering the", "correct": "Back to Hoops" },
+               { "id": "10", "question": "Illegally pursuing the snitch", "correct": "Back to Hoops" },
+               { "id": "11", "question": "Delaying the completion of the turnover procedure ", "correct": "Back to Hoops" },
+
+               { "id": "15", "question": "Encroaching on the pitch", "correct": "Blue Card" },
+               { "id": "16", "question": "Illegal substitution", "correct": "Blue Card" },
+               { "id": "17", "question": "Illegal circumvention (leaving sub area)", "correct": "Blue Card" },
+               { "id": "18", "question": "Unintentional sideline interference", "correct": "Blue Card" },
+               { "id": "19", "question": "Entering play with illegally long or sharp fingernails", "correct": "Blue Card" },
+               { "id": "20", "question": "Entering play without wearing mandatory equipment", "correct": "Blue Card" },
+               { "id": "21", "question": "Intentionally removing mandatory equipment while in play", "correct": "Blue Card" },
+               { "id": "22", "question": "Entering play without a legal and recognizable jersey number", "correct": "Blue Card" },
+               { "id": "23", "question": "Using illegal additional equipment in play", "correct": "Blue Card" },
+               { "id": "24", "question": "Changing position headbands after the “brooms down” call", "correct": "Blue Card" },
+               { "id": "25", "question": "Changing location behind the keeper zone line after the “brooms down” call", "correct": "Blue Card" },
+               { "id": "26", "question": "False start", "correct": "Blue Card" },
+               { "id": "27", "question": "Seeker false start", "correct": "Blue Card" },
+               { "id": "28", "question": "Intentionally and illegally interacting with a dead quaffle", "correct": "Blue Card" },
+               { "id": "29", "question": "Illegally resetting an opponent’s hoop", "correct": "Blue Card" },
+               { "id": "30", "question": "Unintentionally dislodging hoops repeatedly", "correct": "Blue Card" },
+               { "id": "31", "question": "Illegally contacting an opponent with a held bludger", "correct": "Blue Card" },
+               { "id": "32", "question": "Illegally interacting with play while knocked out", "correct": "Blue Card" },
+               { "id": "33", "question": "Affecting play while unknowingly knocked out", "correct": "Blue Card" },
+               { "id": "34", "question": "Illegal bat", "correct": "Blue Card" },
+               { "id": "35", "question": "Illegal block", "correct": "Blue Card" },
+               { "id": "36", "question": "Illegal bludger swat", "correct": "Blue Card" },
+               { "id": "37", "question": "Struck beater violation", "correct": "Blue Card" },
+               { "id": "38", "question": "Invalid immunity claim", "correct": "Blue Card" },
+               { "id": "39", "question": "Immunity violation", "correct": "Blue Card" },
+               { "id": "40", "question": "Repeated use of explicit or vulgar language", "correct": "Blue Card" },
+               { "id": "41", "question": "Illegally using a ball of one’s own position", "correct": "Blue Card" },
+               { "id": "42", "question": "Failure to avoid a propelled quaffle", "correct": "Blue Card" },
+               { "id": "43", "question": "Illegally failing to make a reasonable effort to avoid a ball", "correct": "Blue Card" },
+               { "id": "44", "question": "Illegal second kick", "correct": "Blue Card" },
+               { "id": "45", "question": "Propelling a ball with the intent of sending any ball out of bounds", "correct": "Blue Card" },
+               { "id": "46", "question": "Illegally using verbal or visual referee signals or commands ", "correct": "Blue Card" },
+
+               { "id": "47", "question": "Intentional sideline interference", "correct": "Red Card" },
+               { "id": "48", "question": "Knowingly initiating a new play with a broken broom", "correct": "Red Card" },
+               { "id": "49", "question": "Using equipment in play that was disallowed by a game official", "correct": "Red Card" },
+               { "id": "50", "question": "Using equipment explicitly barred by the tournament director", "correct": "Red Card" },
+               { "id": "51", "question": "Illegally altering game equipment", "correct": "Red Card" },
+               { "id": "52", "question": " Wearing forbidden equipment", "correct": "Red Card" },
+               { "id": "53", "question": "Intentional interposition goaltending", "correct": "Red Card" },
+               { "id": "54", "question": "Intentionally dislodging a hoop", "correct": "Red Card" },
+               { "id": "55", "question": "Moving or altering a hoop to affect whether the quaffle will pass through it", "correct": "Red Card" },
+               { "id": "56", "question": "Violent or egregious illegal kick", "correct": "Red Card" },
+               { "id": "57", "question": "Violently or egregiously illegally hurdling any person", "correct": "Red Card" },
+               { "id": "58", "question": "Charging a helpless receiver", "correct": "Red Card" },
+               { "id": "59", "question": "Tackling a helpless receiver", "correct": "Red Card" },
+               { "id": "60", "question": " Playing egregiously recklessly", "correct": "Red Card" },
+               { "id": "61", "question": " Egregiously illegal contact against an opponent, spectator, official, or event staffer", "correct": "Red Card" },
+               { "id": "62", "question": "Violent or egregious illegal interposition interaction", "correct": "Red Card" },
+               { "id": "63", "question": "Violently or egregiously illegally interacting with a knocked out opponent", "correct": "Red Card" },
+               { "id": "64", "question": "Egregious unsportsmanlike conduct", "correct": "Red Card" },
+               { "id": "65", "question": "Engaging in a physical altercation with an opponent, spectator, official, or event staffer", "correct": "Red Card" },
+               { "id": "66", "question": "Intentionally spitting at or on an opponent, spectator, official, or event staffer", "correct": "Red Card" },
+               { "id": "67", "question": "Serious foul play", "correct": "Red Card" },
+               { "id": "68", "question": "Intentionally and illegally blocking a score (also 7.1.3.) ", "correct": "Red Card" },
+
+               { "id": "69", "question": "Illegal physical contact (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "70", "question": "Illegally charging a picking player (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "71", "question": "Illegal slide (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "72", "question": "Illegal dive (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "73", "question": "Illegal contact through a teammate (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "74", "question": "Illegal attempt to steal (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "75", "question": "Illegal contact from behind (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "76", "question": "Illegal body block (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "77", "question": "Illegal push (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "78", "question": "Illegal charge (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "79", "question": "Illegal wrap (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "80", "question": "Illegal interaction with the snitch runner (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+               { "id": "81", "question": "Illegal pick (Standard Contact Penalty applies)", "correct": "Yellow Card" },
+          ]
+     </script>
      <script>
           var checkAnswered = document.getElementById("checkIfAnswered");
           var checkStarted = document.getElementById("checkIfStarted");
@@ -110,7 +266,7 @@
           var alreadyAnsweredQuestions = [];
           var numberCorrectAnswers = 0;
           var numberGuesses = 0;
-          var maxNumberOfQuestions = 5;
+          var maxNumberOfQuestions = questionArray.length;
 
           // starts the quiz, i.e. hides the start button, makes the answers visible, get the next question
           function startQuiz() {
@@ -140,10 +296,10 @@
                     for (i = 0; i < allAnswers.length; i++) {
                          if (allAnswers[i].textContent == currentObject.correct) {
                               allAnswers[i].style.background = "green",
-                                   allAnswers[i].style.border = "solid green"
+                                   allAnswers[i].style.border = "solid green", allAnswers[i].style.color = "white"
                          }
                          else {
-                              allAnswers[i].style.background = "red", allAnswers[i].style.border = "red"
+                              allAnswers[i].style.background = "red", allAnswers[i].style.border = "red", allAnswers[i].style.color = "white"
                          }
                     };
                     checkAnswered.textContent = "already answered";
@@ -156,31 +312,29 @@
           // displays the question text and id
           // prevents getting a new question
           function nextQuestion() {
-               if (numberGuesses < maxNumberOfQuestions)
+               if (numberGuesses == maxNumberOfQuestions && numberGuesses > 1 && numberCorrectAnswers != 0) { alert("Good job, you finished the quiz with a score of " + Math.floor(numberCorrectAnswers * 100 / numberGuesses) + "%, amazing!") }
+               if (numberGuesses == maxNumberOfQuestions && numberGuesses > 1 && numberCorrectAnswers == 0) { alert("Sheesh, all wrong? Oh boy...") }
+               if (numberGuesses < maxNumberOfQuestions) {
                     currentObject = questionArray[Math.floor(Math.random() * questionArray.length)];
-               if (alreadyAnsweredQuestions.includes(currentObject.id)) {
-                    // if (alreadyAnsweredQuestions.length == questionArray.length) { return };
-                    nextQuestion();
-               } else {
-                    alreadyAnsweredQuestions.push(currentObject.id);
-                    document.getElementById("questionDisplay").textContent = "Question " + currentObject.id + ": " + currentObject.question;
-                    document.getElementById("answerDisplay").textContent = currentObject.correct;
-                    checkAnswered.textContent = "not yet answered";
-                    nextQuestionButton.style.visibility = "hidden"
-                    for (i = 0; i < allAnswers.length; i++) {
-                         allAnswers[i].style.background = "white", allAnswers[i].style.border = "none"
+                    if (alreadyAnsweredQuestions.includes(currentObject.id)) {
+                         // if (alreadyAnsweredQuestions.length == questionArray.length) { return };
+                         nextQuestion();
+                    } else {
+                         alreadyAnsweredQuestions.push(currentObject.id);
+                         // document.getElementById("questionDisplay").textContent = "Question " + currentObject.id + ": " + currentObject.question;
+                         document.getElementById("questionDisplay").textContent = currentObject.question;
+                         document.getElementById("answerDisplay").textContent = currentObject.correct;
+                         document.getElementById("progressDisplay").textContent = "completed: " + Number(numberGuesses + 1) + "/" + maxNumberOfQuestions;
+                         checkAnswered.textContent = "not yet answered";
+                         nextQuestionButton.style.visibility = "hidden"
+                         for (i = 0; i < allAnswers.length; i++) {
+                              allAnswers[i].style.background = "white", allAnswers[i].style.border = "none", allAnswers[i].style.color = "black"
+                         }
                     }
                }
           };
      </script>
-     <script>var questionArray = [
-               { "id": "1", "title": "first q", "question": "Blue Card", "correct": "Blue Card" },
-               { "id": "2", "title": "second q", "question": "Yellow Card", "correct": "Yellow Card" },
-               { "id": "3", "title": "third q", "question": "Blue Card", "correct": "Blue Card" },
-               { "id": "4", "title": "fourth q", "question": "Red Card", "correct": "Red Card" },
-               { "id": "5", "title": "fifth q", "question": "Back to Hoops", "correct": "Back to Hoops" },
-               { "id": "6", "title": "sixth q", "question": "Blue Card", "correct": "Blue Card" }]
-     </script>
+
 </body>
 
 </html>
